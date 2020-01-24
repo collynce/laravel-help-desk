@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('/admin', function () {
+//    return view('admin.index');
+//});
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+Route::resource('tickets', 'TicketsController');
+
+Route::group(['middleware'=>'role:client'], function (){
+    Route::get('/home', 'HomeController@index')->name('home');
+    return 'I am a client';
+});
+Route::group(['middleware'=>'role:client'], function (){
+    Route::get('/client', 'HomeController@index')->name('home');
+
+});
+
+Auth::routes();
