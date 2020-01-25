@@ -5,6 +5,7 @@ namespace App\Repositories;
 
 use App\Interfaces\TicketsInterface;
 use App\Tickets;
+use App\TicketsCategory;
 use Illuminate\Http\Request;
 
 class TicketsRepository implements TicketsInterface
@@ -16,7 +17,7 @@ class TicketsRepository implements TicketsInterface
 
     public function create()
     {
-
+        return TicketsCategory::all();
     }
 
     public function store(Request $request)

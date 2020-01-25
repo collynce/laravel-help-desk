@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/tickets', 'TicketsController@index');
+Route::post('/tickets', 'TicketsController@store');
+Route::get('/tickets/category', 'TicketsController@create');
 Route::post('/ticketcat', 'TicketsCategory@store');

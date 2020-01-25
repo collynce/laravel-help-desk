@@ -15,6 +15,9 @@
                     @endif
 
                     You are logged in!
+                        @if (Gate::forUser(auth()->user())->allows('create'))
+                                <p>updsd</p>
+                        @endif
                 </div>
 
         </div>

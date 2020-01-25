@@ -17,28 +17,36 @@ class TicketsCategory extends Controller
     public function index()
     {
         $category = $this->ticket->get();
-        return TicketsResource::collection($category);
+//        return TicketsResource::collection($category);
+        return view('admin.tickets.category.index', compact('category'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
+        return view('admin.tickets.category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return TicketsResource
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
+        try {
         $category = $this->ticket->store($request);
-        return new TicketsResource($category);
+//        return new TicketsResource($category);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred, please try again.');
+
+        }
+        return redirect()->route('category.index')->with('message', 'Category created successfully.');
     }
 
     /**
@@ -56,11 +64,12 @@ class TicketsCategory extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
         $category = $this->ticket->edit($id);
+        return view('admin.tickets.category.edit', compact('category'));
     }
 
     /**
@@ -68,24 +77,34 @@ class TicketsCategory extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return TicketsResource
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
-        $category = $this->ticket->update($request, $id);
-        return new TicketsResource($category);
+        try {
+            $$this->ticket->update($request, $id);
+        }catch (\Exception $e){
+            return redirect()->back()->with('error', 'An error occurred, please try again.');
 
+        }
+//        return new TicketsResource($category);
+        return redirect()->route('category.index')->with('message', 'Updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return TicketsResource
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        $category = $this->ticket->destroy($id);
-        return new TicketsResource($category);
+        try{
+            $this->ticket->destroy($id);
+        }catch (\Exception $e){
+            return redirect()->back()->with('error', 'An error occurred, please try again.');
+        }
+//        return new TicketsResource($category);
+        return redirect()->route('category.index')->with('message', 'Deleted successfully.');
     }
 }

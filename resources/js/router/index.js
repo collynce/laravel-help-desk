@@ -5,7 +5,6 @@ import roles from "../views/admin/roles";
 import permissions from "../views/admin/permissions";
 
 Vue.use(VueRouter);
-
 const router = new VueRouter({
     base: process.env.BASE_URL,
     routes: [

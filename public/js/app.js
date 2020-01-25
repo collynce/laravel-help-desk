@@ -2021,6 +2021,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2032,18 +2034,54 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "tickets",
   data: function data() {
     return {
-      form: {}
+      form: {},
+      ticket: {},
+      category: ''
     };
+  },
+  created: function created() {
+    this.getCategories();
   },
   computed: {},
   methods: {
-    post: function post() {
+    addTicketCategory: function addTicketCategory() {
+      var _this = this;
+
       this.$store.dispatch('category/addTicketCategory', this.form).then(function (res) {
+        console.log(res);
+
+        _this.getCategories();
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    addTicket: function addTicket() {
+      this.$store.dispatch('tickets/createTicket', this.ticket).then(function (res) {
         return console.log(res);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/tickets/category').then(function (res) {
+        _this2.category = res.data;
       })["catch"](function (error) {
         return console.log(error);
       });
@@ -37560,7 +37598,7 @@ var render = function() {
               expression: "form.category"
             }
           ],
-          attrs: { placeholder: "Category", type: "text" },
+          attrs: { placeholder: "Category", type: "text", name: "category" },
           domProps: { value: _vm.form.category },
           on: {
             input: function($event) {
@@ -37575,7 +37613,85 @@ var render = function() {
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-lg btn-primary", on: { click: _vm.post } },
+        {
+          staticClass: "btn btn-lg btn-primary",
+          on: { click: _vm.addTicketCategory }
+        },
+        [_vm._v("ADD")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("br"),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("form", { attrs: { action: "" } }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.ticket.subject,
+              expression: "ticket.subject"
+            }
+          ],
+          attrs: { type: "text", name: "subject" },
+          domProps: { value: _vm.ticket.subject },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.ticket, "subject", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.ticket.category,
+                expression: "ticket.category"
+              }
+            ],
+            attrs: { name: "category" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.ticket,
+                  "category",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          _vm._l(_vm.category, function(cat) {
+            return _c(
+              "option",
+              { attrs: { value: "" }, domProps: { value: cat.id } },
+              [_vm._v(_vm._s(cat.category))]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-lg btn-primary", on: { click: _vm.addTicket } },
         [_vm._v("ADD")]
       )
     ])
@@ -53964,6 +54080,7 @@ var state = {};
 var mutations = {};
 var actions = {
   createTicket: function createTicket(context, payload) {
+    console.log(payload);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/api/tickets', payload).then(function (res) {
       console.log(res);
     })["catch"](function (error) {
