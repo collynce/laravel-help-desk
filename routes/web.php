@@ -27,7 +27,7 @@ Route::group(['middleware'=>'role:admin'], function (){
     return 'I am a client';
 });
 Route::group(['middleware'=>'role:client'], function (){
-    Route::get('/client', 'HomeController@index')->name('home');
+    Route::get('/client', 'HomeController@client')->name('home');
 
 });
 Auth::routes();

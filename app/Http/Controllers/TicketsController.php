@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\TicketsResource;
 use App\Interfaces\TicketsInterface;
+use App\Tickets;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -33,7 +34,7 @@ class TicketsController extends Controller
         $category = $this->ticket->create();
 //        TicketsResource::withoutWrapping();
 //        return TicketsResource::collection($category);
-        return view('admin.tickets.create', compact('category'));
+        return view('client.create', compact('category'));
     }
 
     /**
@@ -56,11 +57,12 @@ class TicketsController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        $tickets = Tickets::findOrFail($id);
+        return view('client.show', compact('tickets'));
     }
 
     /**

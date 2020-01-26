@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Comments;
 use Illuminate\Http\Request;
 
-class CommentsController extends Controller
+class EngineersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,12 +30,11 @@ class CommentsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        Comments::create($request->all());
-        return back()->with('message', 'Submitted');
+        //
     }
 
     /**
