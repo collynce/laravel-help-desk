@@ -2,12 +2,9 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Traits\HasRolesAndPermissions;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Traits\HasRolesAndPermissions;
-use Laravel\Passport\HasApiTokens;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable
 {
@@ -53,4 +50,8 @@ class User extends Authenticatable
 //    {
 //        return [];
 //    }
+    public function tickets()
+    {
+        return $this->hasMany(Tickets::class, 'users_id', 'id');
+    }
 }

@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Tickets extends Model
 {
     protected $fillable = [
-        'subject', 'assigned_to', 'ticket_category_id', 'users_id'
+        'subject', 'assigned_to', 'ticket_category_id', 'users_id', 'engineers_id'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @var Engineers[]|\Illuminate\Database\Eloquent\Collection
+     */
 
     public function category()
     {
@@ -32,7 +37,7 @@ class Tickets extends Model
 
     public function engineer()
     {
-        return $this->belongsTo(Engineers::class, 'tickets_id');
+        return $this->belongsTo(Engineers::class, 'engineers_id');
     }
 
     public function setAssignedToAttribute($value)
@@ -42,6 +47,23 @@ class Tickets extends Model
 
     public function autoSelectAssignee()
     {
-        $eng = $this->engineers_id;
+        $eng = Engineers::all();
+//        $all->hasOpenTickets()->get();
+//        $eng =  (new Engineers)->hasOpenTickets()->get();
+        $count = 0;
+        $lowest_tickets = 1000000;
+        foreach ($eng as $e){
+            if ($count == 0) {
+                $lowest_tickets = $e->count();
+            }else{
+                $tickets = $e->count();
+                if ($tickets < $lowest_tickets){
+                    $lowest_tickets = $tickets;
+                }
+            }
+            $count++;
+        }
+        $this->engineers_id = $eng;
+        return $this;
     }
 }

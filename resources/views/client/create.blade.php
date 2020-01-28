@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container mx-auto">
-        <form class="w-full max-w-lg" action="{{route('tickets.store')}}" method="post">
+        <form class="w-full max-w-lg md:mt-10 mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{route('tickets.store')}}" method="post">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
@@ -11,8 +11,8 @@
                     </label>
                     <input
                         name="subject"
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                        id="grid-first-name" type="text" placeholder="Jane">
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        id="grid-first-name" type="text" placeholder="Enter some details">
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
@@ -21,7 +21,7 @@
                            for="grid-description">
                         Description
                     </label>
-                    <textarea name="description" id="grid-description" class="resize-y border rounded focus:outline-none focus:shadow-outline"></textarea>
+                    <textarea name="description" id="grid-description" class="resize-y appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"></textarea>
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-2">
@@ -32,7 +32,7 @@
                     <div class="relative">
                         <select
                             name="ticket_category_id"
-                            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            class="block w-full appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-category">
                             <option value="">Select...</option>
                             @foreach($category as $cat)

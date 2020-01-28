@@ -17,18 +17,25 @@ Route::get('/', function () {
 //Route::get('/admin', function () {
 //    return view('admin.index');
 //});
-Route::get('/admin/', function () {
+Route::get('/admin', function () {
     return view('admin.index');
 });
+Auth::routes();
 Route::resource('tickets', 'TicketsController');
 
 Route::group(['middleware'=>'role:admin'], function (){
     Route::get('/home', 'HomeController@index')->name('home');
     return 'I am a client';
 });
-Route::group(['middleware'=>'role:client'], function (){
+Route::group(['middleware'=>'role:admin'], function (){
     Route::get('/client', 'HomeController@client')->name('home');
 
 });
-Auth::routes();
 Route::resource('category', 'TicketsCategory');
+Route::resource('engineers', 'EngineersController');
+Route::get('/ticket', function () {
+    return view('client.index');
+});
+Route::get('/engineer', function () {
+    return view('admin.engineer.index');
+});

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\TicketsResource;
 use App\Interfaces\TicketsInterface;
 use App\Tickets;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TicketsController extends Controller
@@ -13,15 +14,16 @@ class TicketsController extends Controller
 
     public function __construct(TicketsInterface $ticket)
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
         $this->ticket = $ticket;
     }
 
     public function index()
     {
         $ticket = $this->ticket->get();
-//        return TicketsResource::collection($ticket);
-        return view('admin.tickets.index', compact('ticket'));
+        TicketsResource::withoutWrapping();
+        return TicketsResource::collection($ticket);
+//        return view('client.index', compact('ticket'));
     }
 
     /**
@@ -45,11 +47,12 @@ class TicketsController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $this->ticket->store($request);
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred, please try again.');
-        }
+        $this->ticket->store($request);
+//        try {
+//
+//        } catch (\Exception $e) {
+//            return redirect()->back()->with('error', 'An error occurred, please try again.');
+//        }
         return redirect()->route('tickets.index')->with('message', 'Ticket created successfully.');
     }
 
@@ -57,12 +60,14 @@ class TicketsController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function show($id)
     {
-        $tickets = Tickets::findOrFail($id);
-        return view('client.show', compact('tickets'));
+        $tickets = $this->ticket->show($id);
+        TicketsResource::withoutWrapping();
+        return TicketsResource::collection([$tickets]);
+//        return view('client.show')->with('tickets', $tickets);
     }
 
     /**
@@ -87,6 +92,20 @@ class TicketsController extends Controller
     {
         //
     }
+
+    public function closeTicket($id)
+    {
+        $date = Carbon::now();
+        Tickets::where('id', $id)->update(['closed_at' => $date, 'reopened_at' => null]);
+
+    }
+
+    public function reopenTicket($id)
+    {
+        $date = Carbon::now();
+        Tickets::where('id', $id)->update(['closed_at' => null, 'reopened_at' => $date]);
+    }
+
 
     /**
      * Remove the specified resource from storage.

@@ -1,12 +1,10 @@
 <template>
-    <div class="container">
-        <router-view/>
-    </div>
+    $END$
 </template>
 
 <script>
     export default {
-        name: "ticketshome"
+        name: "closed"
     }
 </script>
 
