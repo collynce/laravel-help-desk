@@ -11,8 +11,13 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            name: 'tickets',
+            name: 'ticketsview',
             component: ticketview
+        },
+        {
+            path: '/tickets',
+            name: 'tickets',
+            component: tickets
         },
         {
             path: '/details/:id',

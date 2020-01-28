@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -77,62 +77,44 @@
             </div>
         </div>
     </nav>
-    <div class="mt-2 mb-3 ml-5">
-        <ul class="flex items-center justify-between flex-wrap p-3">
-            <li class="flex-1 mr-2">
-                <a class="text-center block border border-blue-500 rounded py-2 px-4  hover:bg-blue-700"
-                   href="{{url('ticket')}}">My Tickets</a>
-            </li>
-            <li class="flex-1 mr-2">
-                <a class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                   href="#">Closed Tickets</a>
-            </li>
-            <li class="flex-1 mr-2">
-                <a class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4"
-                   href="{{route('tickets.create')}}">Create Ticket</a>
-            </li>
-        </ul>
-    </div>
-{{--    <div class="w-full h-full border shadow">--}}
-{{--        <div class="flex">--}}
-{{--            <div class="bg-blue-500 h-100 text-purple-lighter w-1/5 pb-6 hidden md:block">--}}
-{{--                <div class="flex items-center mb-6 px-4">--}}
-{{--                    <span class="bg-green rounded-full block w-2 h-2 mr-2"></span>--}}
-{{--                    <span class="text-purple-lightest">Olivia</span>--}}
-{{--                </div>--}}
-
-{{--                <div class="px-4 mb-2 font-sans">Channels</div>--}}
-{{--                <div class="bg-teal-dark mb-6 py-1 px-4 text-white font-semi-bold "><span class="pr-1 text-grey-light">#</span> general</div>--}}
-
-{{--                <div class="px-4 mb-3 font-sans">Direct Messages</div>--}}
-
-{{--                <div class="flex items-center mb-3 px-4">--}}
-{{--                    <span class="bg-green rounded-full block w-2 h-2 mr-2"></span>--}}
-{{--                    <span class="text-purple-lightest">Olivia Dunham <i class="text-grey text-sm">(me)</i></span>--}}
-{{--                </div>--}}
-
-
-{{--                <div class="flex items-center mb-3 px-4">--}}
-{{--                    <span class="bg-green rounded-full block w-2 h-2 mr-2"></span>--}}
-{{--                    <span class="text-purple-lightest">Adam Bishop</span>--}}
-{{--                </div>--}}
-
-{{--                <div class="flex items-center px-4 mb-6">--}}
-{{--                    <span class="border rounded-full block w-2 h-2 mr-2"></span>--}}
-{{--                    <span class="text-purple-lightest">killgt</span>--}}
-{{--                </div>--}}
-
-
-{{--                <div class="px-4 mb-3 font-sans">Applications</div>--}}
-
-{{--            </div>--}}
-{{--            <div class="w-full flex flex-col h-full">--}}
-{{--                --}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-    <div class="flex">
-        @yield('content')
+    <div class="flex justify-between">
+        <div class="flex-2  w-1/6 h-full ">
+            <div class="absolute w-1/6 h-full">
+                <div class="absolute inset-y-0 w-full left-0 bg-gray-600">
+                    <ul class="list-reset">
+                        <li>
+                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
+                               href="{{url('ticket')}}">Dashboard</a>
+                        </li>
+                        <li>
+                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
+                               href="{{route('alltickets.index')}}">Tickets</a>
+                        </li>
+{{--                        <li>--}}
+{{--                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "--}}
+{{--                               href="{{url('ticket/closed')}}">Closed Tickets</a>--}}
+{{--                        </li>--}}
+                        <li>
+                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                               href="{{route('tickets.create')}}">Create Ticket</a>
+                        </li>
+                        <li>
+                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                               href="{{route('category.index')}}">Ticket Categories</a>
+                        </li>
+                        <li>
+                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                               href="{{url('/engineer/all')}}">IT Engineers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="w-10/12 mx-auto px-4 py-2 m-2">
+            <div class="flex">
+                @yield('content')
+            </div>
+        </div>
     </div>
 </div>
 </body>

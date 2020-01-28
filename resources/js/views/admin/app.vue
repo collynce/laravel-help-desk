@@ -1,7 +1,6 @@
 <template>
     <div>
-        <router-link to="/roles">Roles</router-link>
-        <router-link to="/tickets">Tickets</router-link>
+        <router-view/>
     </div>
 </template>
 

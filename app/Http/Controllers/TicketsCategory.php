@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Interfaces\CategoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Resources\TicketsResource;
 
 class TicketsCategory extends Controller
 {
     protected $ticket;
+
     public function __construct(CategoryInterface $ticket)
     {
 //        $this->middleware('auth', ['except'=>'show']);
         $this->ticket = $ticket;
     }
+
     public function index()
     {
         $category = $this->ticket->get();
@@ -34,13 +35,13 @@ class TicketsCategory extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
         try {
-        $category = $this->ticket->store($request);
+            $this->ticket->store($request);
 //        return new TicketsResource($category);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred, please try again.');
@@ -75,15 +76,15 @@ class TicketsCategory extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, $id)
     {
         try {
             $$this->ticket->update($request, $id);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred, please try again.');
 
         }
@@ -94,14 +95,14 @@ class TicketsCategory extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->ticket->destroy($id);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'An error occurred, please try again.');
         }
 //        return new TicketsResource($category);

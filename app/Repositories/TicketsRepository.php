@@ -25,7 +25,13 @@ class TicketsRepository implements TicketsInterface
 
     public function store(Request $request)
     {
-        return Tickets::create($request->all());
+        $ticket = new Tickets();
+        $ticket->subject= $request->subject;
+        $ticket->ticket_category_id= $request->ticket_category_id;
+        $ticket->users_id= $request->users_id;
+        $ticket->engineers_id= $ticket->autoAssignTicket();
+        $ticket->save();
+        return $this;
     }
 
     public function update(Request $request, $id)

@@ -22,6 +22,7 @@ Route::get('/admin', function () {
 });
 Auth::routes();
 Route::resource('tickets', 'TicketsController');
+Route::get('/autoselect', 'TicketsController@assignTicket');
 
 Route::group(['middleware'=>'role:admin'], function (){
     Route::get('/home', 'HomeController@index')->name('home');
@@ -32,10 +33,17 @@ Route::group(['middleware'=>'role:admin'], function (){
 
 });
 Route::resource('category', 'TicketsCategory');
+Route::resource('alltickets', 'RoutesController');
+Route::get('ticket/closed', 'TicketsController@closedTickets');
 Route::resource('engineers', 'EngineersController');
+Route::get('/engineer/all', 'EngineersController@getAllEngineers');
 Route::get('/ticket', function () {
     return view('client.index');
 });
 Route::get('/engineer', function () {
     return view('admin.engineer.index');
 });
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+

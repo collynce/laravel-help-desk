@@ -2,9 +2,10 @@
 
 @section('content')
 <div>
-    <admin-view>
-        <slot></slot>
-    </admin-view>
-    <router-view></router-view>
+   <div class="container">
+       <div class="bg-white shadow w-64 my-2 h-full">
+
+       </div>
+   </div>
 </div>
 @endsection

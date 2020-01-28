@@ -2,36 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d60f665e-9456-4521-ba4b-65c7f38b84a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/StoreTicket.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/client/comments.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/client/ticketdetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/client/ticketshome.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/client/ticketview.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/views/eng/engtickets.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/engineer/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/RoutesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/tickets/alltickets.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/tickets/closed.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/tickets/open.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/tickets/unassigned.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/engineer/all.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/engineer/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/tickets/assign.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Comments.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Comments.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Engineers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Engineers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TicketsCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TicketsCategory.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Interfaces/TicketsInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interfaces/TicketsInterface.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Repositories/TicketsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/TicketsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Status.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Status.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Tickets.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tickets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/TicketsCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TicketsCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Traits/HasRolesAndPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HasRolesAndPermissions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/components.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/store/tickets/tickets.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/tickets/tickets.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/styles/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/styles/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/styles/sass/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/styles/sass/main.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/app.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/tickets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/tickets.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/client/comments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/comments.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/client/ticketdetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/ticketdetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/client/ticketshome.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/ticketshome.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/client/ticketview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/ticketview.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/eng/engtickets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/eng/engtickets.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/engineer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/engineer/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tickets/category/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/category/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tickets/category/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/category/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/tickets/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/tickets/store.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/store.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/client/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/index.blade.php" afterDir="false" />
@@ -39,7 +51,6 @@
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,11 +222,20 @@
       <recent name="$PROJECT_DIR$/resources/views/admin/permissions" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.Interfaces">
+    <configuration name="Interfaces" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/app/Interfaces" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.Interfaces" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -241,7 +261,7 @@
       <updated>1579760313145</updated>
       <workItem from="1579760319227" duration="3404000" />
       <workItem from="1579774819555" duration="24298000" />
-      <workItem from="1579850837603" duration="86582000" />
+      <workItem from="1579850837603" duration="145457000" />
     </task>
     <servers />
   </component>
@@ -252,6 +272,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="261" y="42" key="#Interfaces" timestamp="1580116574307">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="261" y="42" key="#Interfaces/0.0.1280.800@0.0.1280.800" timestamp="1580116574307" />
     <state x="402" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579836080923">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -264,9 +288,14 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="341" y="207" key="NewPhpClassDialog/0.0.1280.800@0.0.1280.800" timestamp="1579838064244" />
-    <state x="305" y="62" width="670" height="676" key="search.everywhere.popup" timestamp="1579877101276">
+    <state x="211" y="114" width="858" height="572" key="find.popup" timestamp="1580142850349">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="211" y="114" width="858" height="572" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1580142850349" />
+    <state x="305" y="62" width="670" height="676" key="search.everywhere.popup" timestamp="1580105969225">
+      <screen x="0" y="23" width="1280" height="732" />
+    </state>
     <state x="305" y="62" width="670" height="676" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1579877101276" />
+    <state x="305" y="62" width="670" height="676" key="search.everywhere.popup/0.23.1280.732@0.23.1280.732" timestamp="1580105969225" />
   </component>
 </project>

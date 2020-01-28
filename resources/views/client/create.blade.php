@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container mx-auto">
-        <form class="w-full max-w-lg md:mt-10 mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{route('tickets.store')}}" method="post">
+        <form class="w-full max-w-xl md:mt-10 mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="{{route('tickets.store')}}" method="post">
             @csrf
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
