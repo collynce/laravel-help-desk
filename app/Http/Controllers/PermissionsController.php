@@ -13,57 +13,6 @@ class PermissionsController extends Controller
      *
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-//    public function Permission()
-//    {
-//        $dev_permission = Permissions::where('permission', 'create-tasks')->first();
-//        $manager_permission = Permissions::where('permission', 'edit-users')->first();
-//        //RoleTableSeeder.php
-//        $dev_role = new Roles();
-//        $dev_role->roles = 'developer';
-//        $dev_role->save();
-//        $dev_role->permissions()->attach($dev_permission);
-//
-//        $manager_role = new Roles();
-//        $manager_role->roles = 'manager';
-//        $manager_role->save();
-//        $manager_role->permissions()->attach($manager_permission);
-//
-//        $dev_role = Roles::where('roles', 'developer')->first();
-//        $manager_role = Roles::where('roles', 'manager')->first();
-//
-//        $createTasks = new Permissions();
-//        $createTasks->permission = 'create-tasks';
-//        $createTasks->save();
-//        $createTasks->roles()->attach($dev_role);
-//
-//        $editUsers = new Permissions();
-//        $editUsers->permission = 'edit-users';
-//        $editUsers->save();
-//        $editUsers->roles()->attach($manager_role);
-//
-//        $dev_role = Roles::where('roles', 'developer')->first();
-//        $manager_role = Roles::where('roles', 'manager')->first();
-//        $dev_perm = Permissions::where('permission', 'create-tasks')->first();
-//        $manager_perm = Permissions::where('permission', 'edit-users')->first();
-//
-//        $developer = new User();
-//        $developer->name = 'Mahedi Hasan';
-//        $developer->email = 'mahedi@gmail.com';
-//        $developer->password = bcrypt('secrettt');
-//        $developer->save();
-//        $developer->roles()->attach($dev_role);
-//        $developer->permissions()->attach($dev_perm);
-//
-//        $manager = new User();
-//        $manager->name = 'Hafizul Islam';
-//        $manager->email = 'hafiz@gmail.com';
-//        $manager->password = bcrypt('secrettt');
-//        $manager->save();
-//        $manager->roles()->attach($manager_role);
-//        $manager->permissions()->attach($manager_perm);
-//
-//        return redirect()->back();
-//    }
 
     public function index()
     {

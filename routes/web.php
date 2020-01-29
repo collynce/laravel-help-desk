@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/permissions/all', 'PermissionsController@index');
         Route::post('/roles/add', 'RolesController@store');
         Route::post('/roles/add', 'RolesController@store');
+        Route::post('/roles/assign', 'RolesController@update');
         Route::post('/roles/assignuser', 'RolesController@assignRoles');
         Route::get('/roles/allusers', 'RolesController@users');
         Route::post('/permissions/add', 'PermissionsController@store');
