@@ -173,6 +173,8 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\RolesServiceProvider::class,
+        App\Providers\PermissionServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TicketServiceProvider::class,
         App\Providers\TicketCategoryServiceProvider::class,

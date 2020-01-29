@@ -1,23 +1,40 @@
 <template>
     <div>
+        <t-modal
+            body-class="text-xl flex flex-col items-center justify-center p-6 flex-grow"
+            class="mt-16 mx-auto"
+            footerClass="bg-teal-400 p-3 flex justify-between"
+            overlay-class="z-40 overflow-auto left-0 top-0 bottom-0 right-0 w-full h-full fixed bg-gray-900 opacity-75"
+            ref="modal"
+            show
+            wrapper-class="bg-gray-100 border-red-400 rounded shadow-xl flex flex-col"
+        >
+            <div>
+                <p v-for="eng in engineers">
+                    {{eng.users}}
+
+                </p>
+            </div>
+            <template v-slot:footer>
+                <t-button @click="$refs.modal.hide()" variant="danger">
+                    Close
+                </t-button>
+            </template>
+        </t-modal>
         <div :key="item.id" class="container px-4" v-for="item in items">
             <div
                 class="border border-gray-400 rounded lg:border-gray-400 bg-white p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
-                    <p class="text-sm text-gray-600 flex items-center">
-                        <svg class="fill-current text-gray-500 w-3 h-3 mr-2" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z"/>
-                        </svg>
-                        Members only
-                    </p>
                     <div class="flex -mx-2">
                         <div class="w-1/2 px-2">
                             <div class="text-gray-900 font-bold text-xl mb-2">{{item.subject}}</div>
                         </div>
                         <div class="w-1/2 px-2">
                             <div class="float-right mb-2">
+                                <button @click="[$refs.modal.show(),getAllEngineers]"
+                                        class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border rounded">
+                                    Assign
+                                </button>
                                 <button v-if="item.closed_at === null && item.reopened_at === null" @click="makeCompleted(item.id)"
                                         class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border rounded">
                                     Close
@@ -47,7 +64,7 @@
                                         Owner: {{item.user.name}}
                                     </p>
                                     <p>
-                                        Status: {{item.status.status}}
+                                        Status: {{item.status}}
                                     </p
                                     >
                                     <p>
@@ -58,7 +75,7 @@
                             <div class="w-1/2 px-2">
                                 <div class="bg-gray-400 p-5 mx-auto">
                                     <p>
-                                        Assigned To: {{item.engineer}}
+                                        Assigned To: {{item.engineer.users.name}}
                                     </p>
                                     <p>
                                         Created: {{item.created_at}}
@@ -73,28 +90,24 @@
                 </div>
                 <div class="flex items-center">
                     <div class="text-sm">
-                        <p class="text-gray-900 leading-none">Comments and Messages</p>
-                        <p class="text-gray-600">Aug 18</p>
+                        <h3 class="text-gray-900 leading-none">Description</h3>
+                        <p class="text-gray-600">{{item.description}}</p>
                     </div>
                 </div>
             </div>
         </div>
         <div :key="item.id" class="rounded shadow-lg mx-auto pt-5 px-auto" v-for="item in items">
-            <div class="px-2" v-for="comment in item.comments">
+            <div class="px-2" v-for="comment in item.comments" :key="comment.id">
                 <div class="flex -mx-2">
                     <div class="w-1/3 px-2 mt-5">
-                        <div class="bg-gray-400">
-                            <p>
-                                {{comment.comment}}
-                            </p>
-                            <p class="text-gray-600">{{comment}}</p>
-                        </div>
+                        <t-card>
+                            <p>From: {{commentUser.name}}</p>
+                                <p>
+                                    {{comment.comment}}
+                                </p>
+                        </t-card>
                     </div>
-                    <div class="w-1/3 px-2">
-                        <div class="bg-gray-400">
-
-                        </div>
-                    </div>
+                    {{getUserComment(comment.users_id)}}
                 </div>
             </div>
             <div v-if="item.closed_at === null">
@@ -110,6 +123,12 @@
 
     export default {
         name: "ticketdetails",
+        data(){
+            return{
+                commentUser:[],
+                engineers:[]
+            }
+        },
         components: {
             comments
         },
@@ -130,6 +149,13 @@
                     .then(r => console.log(r))
                     .catch(er => console.log(er))
             },
+            getAllEngineers(){
+                axios.get('/api/engineers/details')
+                    .then((r)=>{
+                        console.log(r);
+                        this.engineers = r.data
+                    })
+            },
             deleteTicket(id) {
                 console.log(id)
             },
@@ -137,6 +163,14 @@
                 axios.post('/api/tickets/open/' + id)
                     .then(r => console.log(r))
                     .catch(er => console.log(er))
+            },
+            getUserComment(id){
+                axios.post('/api/comments/users/'+id)
+                .then(r=>{
+                    this.commentUser=r.data;
+                }).catch(error=>{
+                    console.log(error)
+                })
             }
         }
     }

@@ -7,7 +7,7 @@
                 <ul class="list-group mx-auto">
                     @foreach($engineers as $eng)
                         <li type="a">
-                            {{$eng->user->name}}
+                            {{$eng->users->name}}
                         </li>
                     @endforeach
                 </ul>
@@ -17,12 +17,15 @@
                       method="post">
                     @csrf
                     <div class="inline-block mb-4 w-full relative">
-                        <label for="users_id" class="block text-gray-700 text-sm font-bold mb-4">Select and Add From Current Users</label>
+                        <label for="users_id" class="block text-gray-700 text-sm font-bold mb-4">Select and Add From
+                            Current Users</label>
                         <select name="users_id" id="users_id"
                                 class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
                             <option value="">Select...</option>
                             @foreach($users as $user)
-                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                @foreach($user->users as $u)
+                                    <option value="{{$u->id}}">{{$u->name}}</option>
+                                @endforeach
                             @endforeach
                         </select>
                     </div>

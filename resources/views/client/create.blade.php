@@ -11,6 +11,7 @@
                     </label>
                     <input
                         name="subject"
+                        required
                         class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         id="grid-first-name" type="text" placeholder="Enter some details">
                 </div>
@@ -21,7 +22,7 @@
                            for="grid-description">
                         Description
                     </label>
-                    <textarea name="description" id="grid-description" class="resize-y appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"></textarea>
+                    <textarea name="description" id="grid-description" class="resize-y appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" required></textarea>
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-2">
@@ -32,6 +33,7 @@
                     <div class="relative">
                         <select
                             name="ticket_category_id"
+                            required
                             class="block w-full appearance-none block  bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                             id="grid-category">
                             <option value="">Select...</option>
@@ -48,9 +50,9 @@
                     </div>
                 </div>
             </div>
-            <input type="text" hidden name="users_id" value="{{Auth::user()->id}}">
+            <input type="text" required hidden name="users_id" value="{{Auth::user()->id}}">
             <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                Button
+                Submit
             </button>
         </form>
     </div>

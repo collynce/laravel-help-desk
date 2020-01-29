@@ -1,10 +1,39 @@
 <template>
-    $END$
+    <div>
+        <form class="mx-auto">
+            <t-input-group
+                label="Role Name"
+            >
+                <t-input
+                    v-model="roles"
+                    type="text"
+                    placeholder="Enter a role"
+                />
+            </t-input-group>
+        </form>
+        <div>
+            <button @click="addRole" class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
+                Add
+            </button>
+        </div>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "createRoles"
+        name: "createRoles",
+        data(){
+            return{
+                roles:''
+            }
+        },
+        methods:{
+            addRole(){
+                this.$store.dispatch('roles/addRole', {
+                    roles:this.roles
+                })
+            }
+        }
     }
 </script>
 

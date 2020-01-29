@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comments;
+use App\Http\Resources\TicketsResource;
+use App\User;
 use Illuminate\Http\Request;
 
 class CommentsController extends Controller
@@ -15,6 +17,12 @@ class CommentsController extends Controller
     public function index()
     {
         //
+    }
+    public function users($id)
+    {
+        $users = User::find($id);
+        TicketsResource::withoutWrapping();
+        return new TicketsResource($users);
     }
 
     /**

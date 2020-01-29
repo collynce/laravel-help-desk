@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tickets extends Model
 {
     protected $fillable = [
-        'subject', 'ticket_category_id', 'users_id', 'engineers_id'
+        'subject', 'ticket_category_id', 'users_id', 'engineers_id', 'description'
     ];
 
     /**
@@ -25,11 +25,6 @@ class Tickets extends Model
         return $this->belongsTo(User::class, 'users_id');
     }
 
-    public function status()
-    {
-        return $this->belongsTo(Status::class, 'status_id');
-    }
-
     public function comments()
     {
         return $this->hasMany(Comments::class, 'tickets_id');
@@ -37,7 +32,7 @@ class Tickets extends Model
 
     public function engineer()
     {
-        return $this->belongsTo(Engineers::class, 'engineers_id','id')->with('users');
+        return $this->belongsTo(Engineers::class, 'engineers_id', 'id')->with('users');
     }
 
     public function setAssignedToAttribute($value)
@@ -67,7 +62,7 @@ class Tickets extends Model
                 }
                 $count++;
             }
-            return  $selected_agent_id;
+            return $selected_agent_id;
         } elseif ($data) {
             foreach ($data as $e) {
                 $selected_agent_id = $e->id;

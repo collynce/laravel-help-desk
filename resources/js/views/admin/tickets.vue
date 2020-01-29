@@ -19,6 +19,7 @@
                 <component :is="currentTabComponent"/>
             </keep-alive>
         </div>
+        {{$route.params.id}}
     </div>
 </template>
 <script>

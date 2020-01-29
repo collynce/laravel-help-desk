@@ -41,14 +41,12 @@
         </div>
         <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
             <div class="text-sm lg:flex-grow">
-                <a href="{{route('tickets.create')}}"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    Create Ticket
-                </a>
-                <a href="{{route('tickets.index')}}"
-                   class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-                    My Tickets
-                </a>
+                @if(auth()->user())
+                    <a href="{{route('tickets.create')}}"
+                       class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        Create Ticket
+                    </a>
+                @endif
                 <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                     FAQs
                 </a>
@@ -78,38 +76,44 @@
         </div>
     </nav>
     <div class="flex justify-between">
-        <div class="flex-2  w-1/6 h-full ">
-            <div class="absolute w-1/6 h-full">
-                <div class="absolute inset-y-0 w-full left-0 bg-gray-600">
-                    <ul class="list-reset">
-                        <li>
-                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
-                               href="{{url('ticket')}}">Dashboard</a>
-                        </li>
-                        <li>
-                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
-                               href="{{route('alltickets.index')}}">Tickets</a>
-                        </li>
-{{--                        <li>--}}
-{{--                            <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "--}}
-{{--                               href="{{url('ticket/closed')}}">Closed Tickets</a>--}}
-{{--                        </li>--}}
-                        <li>
-                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
-                               href="{{route('tickets.create')}}">Create Ticket</a>
-                        </li>
-                        <li>
-                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
-                               href="{{route('category.index')}}">Ticket Categories</a>
-                        </li>
-                        <li>
-                            <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
-                               href="{{url('/engineer/all')}}">IT Engineers</a>
-                        </li>
-                    </ul>
+        @if(auth()->user())
+            <div class="flex-2  w-1/6 h-full ">
+                <div class="absolute w-1/6 h-full">
+                    <div class="absolute inset-y-0 w-full left-0 bg-gray-600">
+                        <ul class="list-reset">
+                            <li>
+                                <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
+                                   href="{{url('ticket')}}">Dashboard</a>
+                            </li>
+                            @if (auth()->user()->hasRole('admin'))
+                                <li>
+                                    <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
+                                       href="{{route('alltickets.index')}}">Tickets</a>
+                                </li>
+                            @endif
+                            <li>
+                                <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                                   href="{{route('tickets.create')}}">Create Ticket</a>
+                            </li>
+                            @if (auth()->user()->hasRole('admin'))
+                                <li>
+                                    <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                                       href="{{url('/allroles')}}">User Management</a>
+                                </li>
+                                <li>
+                                    <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                                       href="{{route('category.index')}}">Ticket Categories</a>
+                                </li>
+                                <li>
+                                    <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
+                                       href="{{url('/engineer/all')}}">IT Engineers</a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
         <div class="w-10/12 mx-auto px-4 py-2 m-2">
             <div class="flex">
                 @yield('content')

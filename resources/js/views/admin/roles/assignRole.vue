@@ -1,10 +1,13 @@
 <template>
-    $END$
+    <div>
+        dfdf
+    </div>
 </template>
 
 <script>
     export default {
-        name: "assignRole"
+        name: "assignRole",
+        props:['giveRoles']
     }
 </script>
 

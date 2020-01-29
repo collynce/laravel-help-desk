@@ -8,7 +8,6 @@ use App\Roles;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class EngineersController extends Controller
 {
@@ -26,31 +25,31 @@ class EngineersController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $tickets = Engineers::where('users_id','=', $user)->get();
+        $tickets = Engineers::where('users_id', '=', $user)->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }
 
     public function getAllEngineers()
     {
+        $users = Roles::all()->where('roles', '=', 'staff');
         $engineers = Engineers::all();
-        $roles = Roles::where('roles', '=', 'staff')->pluck('id');
-        $users = User::where('roles_id', '=', $roles)->get();
         return view('admin.engineer.all')->with('engineers', $engineers)->with('users', $users);
+    }
+    public function getEngineers()
+    {
+        $engineers = Engineers::with('users')->get();
+        TicketsResource::withoutWrapping();
+        return TicketsResource::collection($engineers);
+//        return view('admin.engineer.all')->with('engineers', $engineers)->with('users', $users);
     }
 
     public function create()
     {
-
-        return view('admin.engineer.create', compact('users'));
+//        TicketsResource::withoutWrapping();
+//        return TicketsResource::collection($roles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
         Engineers::create($request->all());

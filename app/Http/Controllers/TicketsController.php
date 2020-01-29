@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Notifications\TicketCreation;
 use App\Engineers;
 use App\Http\Resources\TicketsResource;
 use App\Interfaces\TicketsInterface;
@@ -16,7 +16,7 @@ class TicketsController extends Controller
 
     public function __construct(TicketsInterface $ticket)
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
         $this->ticket = $ticket;
     }
 
@@ -29,28 +29,28 @@ class TicketsController extends Controller
 
     public function getAllTickets()
     {
-        $tickets = Tickets::with('user', 'status', 'engineer', 'category')->get();
+        $tickets = Tickets::with('user', 'engineer', 'category')->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }
 
     public function getOpenTickets()
     {
-        $tickets = Tickets::with('user', 'status', 'engineer', 'category')->whereNull('closed_at')->get();
+        $tickets = Tickets::with('user', 'engineer', 'category')->whereNull('closed_at')->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }
 
     public function getClosedTickets()
     {
-        $tickets = Tickets::with('user', 'status', 'engineer', 'category')->whereNotNull(['closed_at', 'engineers_id'])->get();
+        $tickets = Tickets::with('user', 'engineer', 'category')->whereNotNull(['closed_at', 'engineers_id'])->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }
 
     public function unassignedTickets()
     {
-        $tickets = Tickets::with('user', 'status', 'engineer', 'category')->whereNull('engineers_id')->get();
+        $tickets = Tickets::with('user', 'engineer', 'category')->whereNull('engineers_id')->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }

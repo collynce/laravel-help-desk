@@ -17,7 +17,7 @@
             <tr class="flex w-full" v-for="data in details">
                 <td class="border p-4 w-1/4">{{data.id}}</td>
                 <td class="border p-4 w-1/4">{{data.subject}}</td>
-                <td class="border p-4 w-1/4">{{data.status.status}}</td>
+                <td class="border p-4 w-1/4">{{data.status}}</td>
                 <td class="border p-4 w-1/4">{{data.category.category}}</td>
                 <td class="border p-4 w-1/4">{{data.engineer.users.name}}</td>
                 <td class="border p-4 w-1/4">{{data.created_at}}</td>

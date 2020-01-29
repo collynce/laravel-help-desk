@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     /**
@@ -20,14 +17,13 @@ class HomeController extends Controller
 
     public function index()
     {
-        $user = User::all();
-        return view('home', compact('user'));
-
+        return view('home');
     }
+
     public function client()
     {
-//        dd($this->can('manage-users'));
         return view('client.index');
     }
+
 
 }

@@ -1,8 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import tickets from "../views/admin/tickets";
-import roles from "../views/admin/roles";
-import permissions from "../views/admin/permissions";
+import rolesView from "../views/admin/rolesView";
+import permissions from "../views/admin/userRoles";
 import ticketdetails from "../views/client/ticketdetails";
 import ticketview from "../views/client/ticketview";
 Vue.use(VueRouter);
@@ -27,7 +27,7 @@ const router = new VueRouter({
         {
             path: '/roles',
             name: 'roles',
-            component: roles
+            component: rolesView
         },
         {
             path: '/permissions',

@@ -3,70 +3,87 @@
 
 namespace App\Traits;
 
-use App\Roles;
-use App\User;
 use App\Permissions;
+use App\Roles;
 
 trait HasRolesAndPermissions
 {
 
-    public function roles()
+    public function givePermissionsTo(...$permissions)
     {
-        return $this->hasMany(Roles::class,'id', 'roles_id');
-    }
 
-    public function permissions()
-    {
-        return $this->hasManyThrough(Permissions::class, Roles::class);
-    }
-
-    public function hasRole(... $roles ) {
-        foreach ($roles as $role) {
-            if ($this->roles->contains('roles', $role)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public function hasPermissionThroughRole($permission)
-    {
-        foreach ($permission->roles as $role){
-            if($this->roles->contains($role)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    protected function hasPermissionTo($permission)
-    {
-        return $this->hasPermissionThroughRole($permission);
-    }
-
-    protected function getAllPermissions(array $permissions)
-    {
-        return Permissions::whereIn('name', $permissions)->get();
-    }
-
-    protected function givePermissionTo(... $permissions)
-    {
         $permissions = $this->getAllPermissions($permissions);
-        if ($permissions === null){
+//        dd($permissions);
+        if ($permissions === null) {
             return $this;
         }
         $this->permissions()->saveMany($permissions);
         return $this;
     }
 
-    protected function deletePermissions(... $permissions)
+    public function withdrawPermissionsTo(...$permissions)
     {
-
-    }
-    protected function refreshPermissions(... $permissions)
-    {
-
+        $permissions = $this->getAllPermissions($permissions);
+        $this->permissions()->detach($permissions);
+        return $this;
     }
 
+    public function refreshPermissions(...$permissions)
+    {
+        $this->permissions()->detach();
+        return $this->givePermissionsTo($permissions);
+    }
+
+    public function hasPermissionTo($permission)
+    {
+
+        return $this->hasPermissionThroughRole($permission) || $this->hasPermission($permission);
+    }
+
+    public function hasPermissionThroughRole($permission)
+    {
+
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function hasRole(...$roles)
+    {
+
+        foreach ($roles as $role) {
+            if ($this->roles->contains('roles', $role)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function roles()
+    {
+
+        return $this->belongsToMany(Roles::class, 'users_roles', 'users_id');
+
+    }
+
+    public function permissions()
+    {
+
+        return $this->belongsToMany(Permissions::class, 'users_permissions', 'users_id');
+
+    }
+
+    protected function hasPermission($permission)
+    {
+        return (bool)$this->permissions->where('permission', $permission->permission)->count();
+    }
+
+    protected function getAllPermissions(array $permissions)
+    {
+        return Permissions::whereIn('permission', $permissions)->get();
+
+    }
 }

@@ -19,7 +19,7 @@
                 <td class="border p-4 w-1/4">{{data.id}}</td>
                 <td class="border p-4 w-1/4">{{data.subject}}</td>
                 <td class="border p-4 w-1/4">{{data.user.name}}</td>
-                <td class="border p-4 w-1/4">{{data.status.status}}</td>
+                <td class="border p-4 w-1/4">{{data.status}}</td>
                 <td class="border p-4 w-1/4">{{data.category.category}}</td>
                 <td class="border p-4 w-1/4">{{data.engineer.users.name}}</td>
                 <td class="border p-4 w-1/4">{{data.created_at}}</td>
@@ -37,7 +37,6 @@
             </tr>
             </tbody>
         </table>
-
     </div>
 </template>
 
@@ -47,7 +46,8 @@
         name: "alltickets",
         data(){
             return{
-                tickets:[]
+                tickets:[],
+                currentComponent:''
             }
         },
         created() {
