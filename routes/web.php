@@ -57,6 +57,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/tickets/category', 'TicketsController@create');
         Route::post('/ticketcat', 'TicketsCategory@store');
         Route::get('/ticket/details/{id}', 'TicketsController@show');
+        Route::post('/tickets/delete/{id}', 'TicketsController@destroy');
         Route::post('/tickets/comment', 'CommentsController@store');
         Route::post('/comments/users/{id}', 'CommentsController@users');
         Route::get('/engineers', 'EngineersController@index');

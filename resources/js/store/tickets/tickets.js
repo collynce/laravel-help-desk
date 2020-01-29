@@ -43,6 +43,13 @@ const actions = {
     },
     addComment(context, payload){
         axios.post('/api/tickets/comment', payload).then(r=>console.log(r))
+    },
+    deleteTicket(context, payload){
+        console.log(payload);
+        axios.post('/api/tickets/delete/'+payload)
+            .then((r)=>{
+            console.log(r)
+        }).catch(er=>console.log(er))
     }
 };
 

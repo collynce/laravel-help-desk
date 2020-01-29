@@ -2796,7 +2796,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2838,7 +2837,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deleteTicket: function deleteTicket(id) {
-      console.log(id);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tickets/delete/' + id).then(function (r) {
+        console.log(r);
+      });
     },
     reopenTicket: function reopenTicket(id) {
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tickets/open/' + id).then(function (r) {
@@ -2931,6 +2932,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ticketview",
   components: {},
@@ -2945,6 +2948,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getTicketDetails: function getTicketDetails() {
       this.$store.dispatch('tickets/getAllTickets');
+    },
+    deleteTicket: function deleteTicket(id) {
+      this.$store.dispatch('tickets/deleteTicket', id);
     }
   }
 });
@@ -3045,6 +3051,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "alltickets",
@@ -3066,6 +3075,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         return console.log(error);
       });
+    },
+    deleteTicket: function deleteTicket(id) {
+      this.$store.dispatch('tickets/deleteTicket', id);
     }
   }
 });
@@ -3083,6 +3095,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3198,6 +3215,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "open",
@@ -3233,6 +3255,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40428,7 +40455,7 @@ var render = function() {
             _vm._l(_vm.engineers, function(eng) {
               return _c("p", [
                 _vm._v(
-                  "\n                " + _vm._s(eng.users) + "\n\n            "
+                  "\n                " + _vm._s(eng.users) + "\n            "
                 )
               ])
             }),
@@ -40737,57 +40764,77 @@ var render = function() {
     _c("table", { staticClass: "text-left w-full" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "tbody",
-        {
-          staticClass:
-            "bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full",
-          staticStyle: { height: "50vh" }
-        },
-        _vm._l(_vm.details, function(data) {
-          return _c("tr", { staticClass: "flex w-full" }, [
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.id))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.subject))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.status))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.category.category))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.engineer.users.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.created_at))
-            ]),
-            _vm._v(" "),
-            _c(
-              "td",
-              { staticClass: "border p-4 w-1/4 text-center" },
-              [
-                _c("router-link", { attrs: { to: "/details/" + data.id } }, [
-                  _c("span", {
-                    staticClass: "mdi mdi-eye mdi-30px text-teal-500 mr-6"
-                  })
+      _vm.details.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full",
+              staticStyle: { height: "50vh" }
+            },
+            _vm._l(_vm.details, function(data) {
+              return _c("tr", { staticClass: "flex w-full" }, [
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.id))
                 ]),
                 _vm._v(" "),
-                _vm._m(1, true)
-              ],
-              1
-            )
-          ])
-        }),
-        0
-      )
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.status))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.engineer.users.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.created_at))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border p-4 w-1/4 text-center" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/details/" + data.id } },
+                      [
+                        _c("span", {
+                          staticClass: "mdi mdi-eye mdi-30px text-teal-500 mr-6"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass: "mdi mdi-delete mdi-30px text-red-500 mr-6",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteTicket(data.id)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
     ])
   ])
 }
@@ -40817,14 +40864,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "hover:bg-teal-300 ", attrs: { href: "" } }, [
-      _c("span", { staticClass: "mdi mdi-delete mdi-30px text-red-500 mr-6" })
-    ])
   }
 ]
 render._withStripped = true
@@ -40876,61 +40915,82 @@ var render = function() {
     _c("table", { staticClass: "text-left w-full" }, [
       _vm._m(0),
       _vm._v(" "),
-      _c(
-        "tbody",
-        {
-          staticClass:
-            "bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full",
-          staticStyle: { height: "50vh" }
-        },
-        _vm._l(_vm.tickets, function(data) {
-          return _c("tr", { staticClass: "flex w-full" }, [
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.id))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.subject))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.user.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.status))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.category.category))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.engineer.users.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border p-4 w-1/4" }, [
-              _vm._v(_vm._s(data.created_at))
-            ]),
-            _vm._v(" "),
-            _c(
-              "td",
-              { staticClass: "border p-4 w-1/4 text-center" },
-              [
-                _c("router-link", { attrs: { to: "/details/" + data.id } }, [
-                  _c("span", {
-                    staticClass: "mdi mdi-eye mdi-30px text-teal-500 mr-6"
-                  })
+      _vm.tickets.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full",
+              staticStyle: { height: "50vh" }
+            },
+            _vm._l(_vm.tickets, function(data) {
+              return _c("tr", { staticClass: "flex w-full" }, [
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.id))
                 ]),
                 _vm._v(" "),
-                _vm._m(1, true)
-              ],
-              1
-            )
-          ])
-        }),
-        0
-      )
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.user.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.status))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.engineer.users.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.created_at))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border p-4 w-1/4 text-center" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/details/" + data.id } },
+                      [
+                        _c("span", {
+                          staticClass: "mdi mdi-eye mdi-30px text-teal-500 mr-6"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass:
+                        "mdi cursor-pointer mdi-delete mdi-30px text-red-500 mr-6",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteTicket(data.id)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
     ])
   ])
 }
@@ -40962,14 +41022,6 @@ var staticRenderFns = [
         ])
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "hover:bg-teal-300 ", attrs: { href: "" } }, [
-      _c("span", { staticClass: "mdi mdi-delete mdi-30px text-red-500 mr-6" })
-    ])
   }
 ]
 render._withStripped = true
@@ -40999,36 +41051,45 @@ var render = function() {
     _c("table", { staticClass: "table-auto mx-auto px-4 w-full text-center" }, [
       _vm._m(1),
       _vm._v(" "),
-      _c(
-        "tbody",
-        { staticClass: "bg-gray-400" },
-        _vm._l(_vm.closedTickets, function(ticket) {
-          return _c("tr", [
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.id))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.subject))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.user.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.category.category))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.engineer.users.name))
-            ]),
-            _vm._v(" "),
-            _vm._m(2, true)
-          ])
-        }),
-        0
-      )
+      _vm.closedTickets.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            { staticClass: "bg-gray-400" },
+            _vm._l(_vm.closedTickets, function(ticket) {
+              return _c("tr", [
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.id))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.user.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.engineer.users.name))
+                ]),
+                _vm._v(" "),
+                _vm._m(2, true)
+              ])
+            }),
+            0
+          )
     ])
   ])
 }
@@ -41109,36 +41170,45 @@ var render = function() {
     _c("table", { staticClass: "table-auto mx-auto px-4 w-full" }, [
       _vm._m(1),
       _vm._v(" "),
-      _c(
-        "tbody",
-        { staticClass: "bg-gray-400" },
-        _vm._l(_vm.opentickets, function(ticket) {
-          return _c("tr", [
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.id))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.subject))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.user.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.category.category))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.engineer.users.name))
-            ]),
-            _vm._v(" "),
-            _vm._m(2, true)
-          ])
-        }),
-        0
-      )
+      _vm.opentickets.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            { staticClass: "bg-gray-400" },
+            _vm._l(_vm.opentickets, function(ticket) {
+              return _c("tr", [
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.id))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.user.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.engineer.users.name))
+                ]),
+                _vm._v(" "),
+                _vm._m(2, true)
+              ])
+            }),
+            0
+          )
     ])
   ])
 }
@@ -41219,32 +41289,41 @@ var render = function() {
     _c("table", { staticClass: "table-auto mx-auto px-4 w-full" }, [
       _vm._m(1),
       _vm._v(" "),
-      _c(
-        "tbody",
-        { staticClass: "bg-gray-400" },
-        _vm._l(_vm.unassignedTickets, function(ticket) {
-          return _c("tr", [
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.id))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.category.category))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.subject))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "border px-4 py-2" }, [
-              _vm._v(_vm._s(ticket.engineer))
-            ]),
-            _vm._v(" "),
-            _vm._m(2, true)
-          ])
-        }),
-        0
-      )
+      _vm.unassignedTickets.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            { staticClass: "bg-gray-400" },
+            _vm._l(_vm.unassignedTickets, function(ticket) {
+              return _c("tr", [
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.id))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border px-4 py-2" }, [
+                  _vm._v(_vm._s(ticket.engineer))
+                ]),
+                _vm._v(" "),
+                _vm._m(2, true)
+              ])
+            }),
+            0
+          )
     ])
   ])
 }
@@ -75503,6 +75582,14 @@ var actions = {
   addComment: function addComment(context, payload) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tickets/comment', payload).then(function (r) {
       return console.log(r);
+    });
+  },
+  deleteTicket: function deleteTicket(context, payload) {
+    console.log(payload);
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/tickets/delete/' + payload).then(function (r) {
+      console.log(r);
+    })["catch"](function (er) {
+      return console.log(er);
     });
   }
 };

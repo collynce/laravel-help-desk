@@ -127,6 +127,6 @@ class TicketsController extends Controller
 
     public function destroy($id)
     {
-        //
+       $this->ticket->destroy($id);
     }
 }

@@ -14,7 +14,12 @@
             <th class="border px-4 py-2">Actions</th>
         </tr>
         </thead>
-        <tbody class="bg-gray-400">
+        <tbody class="bg-gray-400 flex flex-col text-center items-center justify-between w-full" v-if="opentickets.length === 0">
+        <tr>
+            No Data Available
+        </tr>
+        </tbody>
+        <tbody v-else class="bg-gray-400">
         <tr v-for="ticket in opentickets">
             <td class="border px-4 py-2">{{ticket.id}}</td>
             <td class="border px-4 py-2">{{ticket.subject}}</td>

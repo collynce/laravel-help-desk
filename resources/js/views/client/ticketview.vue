@@ -12,7 +12,12 @@
                 <th class=" p-4 w-1/4">Actions</th>
             </tr>
             </thead>
-            <tbody class="bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full"
+            <tbody class="bg-gray-400 flex flex-col text-center items-center justify-between w-full" v-if="details.length === 0">
+            <tr>
+                No Data Available
+            </tr>
+            </tbody>
+            <tbody v-else class="bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full"
                    style="height: 50vh;">
             <tr class="flex w-full" v-for="data in details">
                 <td class="border p-4 w-1/4">{{data.id}}</td>
@@ -27,10 +32,7 @@
                     </router-link>
                     <!--                    <a class="bg-yellow-700 hover:bg-teal-300 text-white font-bold py-2 px-4 rounded-full"-->
                     <!--                       href="">Edit</a>-->
-                    <a class="hover:bg-teal-300 "
-                       href="">
-                        <span class="mdi mdi-delete mdi-30px text-red-500 mr-6"></span>
-                    </a>
+                        <span class="mdi mdi-delete mdi-30px text-red-500 mr-6" @click="deleteTicket(data.id)"/>
                 </td>
             </tr>
             </tbody>
@@ -53,6 +55,9 @@
         methods: {
             getTicketDetails() {
                 this.$store.dispatch('tickets/getAllTickets')
+            },
+            deleteTicket(id){
+                this.$store.dispatch('tickets/deleteTicket', id)
             }
         }
 

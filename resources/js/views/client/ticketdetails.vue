@@ -12,7 +12,6 @@
             <div>
                 <p v-for="eng in engineers">
                     {{eng.users}}
-
                 </p>
             </div>
             <template v-slot:footer>
@@ -157,7 +156,9 @@
                     })
             },
             deleteTicket(id) {
-                console.log(id)
+                axios.post('/api/tickets/delete/'+id).then((r)=>{
+                    console.log(r)
+                })
             },
             reopenTicket(id){
                 axios.post('/api/tickets/open/' + id)
