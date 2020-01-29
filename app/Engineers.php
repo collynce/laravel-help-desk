@@ -10,6 +10,8 @@ class Engineers extends Model
 
     protected $fillable = ['users_id'];
 
+    public $timestamps = false;
+
     public function tickets()
     {
         return $this->hasMany(Tickets::class, 'engineers_id', 'id');

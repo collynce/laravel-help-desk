@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('roles', 'RolesController');
     Route::resource('permissions', 'PermissionsController');
     Route::get('/engineer/all', 'EngineersController@getAllEngineers');
+//    Route::get('/engineer/all', 'EngineersController@getAllEngineers');
     Route::get('/ticket', function () {
         return view('client.index');
     });

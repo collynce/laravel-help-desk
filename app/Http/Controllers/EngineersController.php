@@ -41,7 +41,7 @@ class EngineersController extends Controller
         $engineers = Engineers::with('users')->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($engineers);
-//        return view('admin.engineer.all')->with('engineers', $engineers)->with('users', $users);
+//        return view('admin.engineer.all')->with('engineers', $engineers);
     }
 
     public function create()
