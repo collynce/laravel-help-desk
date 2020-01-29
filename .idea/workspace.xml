@@ -2,66 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d60f665e-9456-4521-ba4b-65c7f38b84a1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Mail/UserNotification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/store/users/users.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RolesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RolesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoutesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoutesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RolesMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RolesMiddleware.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notifications/TicketCreation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Notifications/TicketCreation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Permissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Permissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/PermissionServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/PermissionServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RolesServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RolesServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/TicketsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/TicketsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Roles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Roles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/RolesHasPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/RolesHasPermissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Status.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Tickets.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Tickets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Traits/HasRolesAndPermissions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Traits/HasRolesAndPermissions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/permissions/permissions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/permissions/permissions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/store/roles/roles.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/roles/roles.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/permissions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/userRoles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/permissions/assignPermission.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/permissions/assignPermission.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/permissions/createPermissions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/permissions/createPermissions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/permissions/permissions.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/permissions/permissions.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/roles/assignRole.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/roles/assignRole.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/roles/createRoles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/roles/createRoles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/roles/roles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/roles/roles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/rolesView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/rolesView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/admin/tickets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/admin/tickets.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/client/comments.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/comments.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/client/ticketdetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/ticketdetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/client/ticketview.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/client/ticketview.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/tickets/alltickets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/tickets/alltickets.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/engineer/all.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/engineer/all.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/roles/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/roles/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/client/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/client/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +213,7 @@
       <updated>1579760313145</updated>
       <workItem from="1579760319227" duration="3404000" />
       <workItem from="1579774819555" duration="24298000" />
-      <workItem from="1579850837603" duration="223091000" />
+      <workItem from="1579850837603" duration="223833000" />
     </task>
     <servers />
   </component>

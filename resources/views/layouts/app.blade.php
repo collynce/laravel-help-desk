@@ -47,9 +47,6 @@
                         Create Ticket
                     </a>
                 @endif
-                <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
-                    FAQs
-                </a>
             </div>
             <div>
                 @guest
