@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d60f665e-9456-4521-ba4b-65c7f38b84a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/views/eng/details.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/eng/engineers.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EngineersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RoutesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RoutesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TicketsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/components.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/eng/engtickets.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/eng/engtickets.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/engineer/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/engineer/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -220,7 +220,7 @@
       <updated>1579760313145</updated>
       <workItem from="1579760319227" duration="3404000" />
       <workItem from="1579774819555" duration="24298000" />
-      <workItem from="1579850837603" duration="231964000" />
+      <workItem from="1579850837603" duration="232956000" />
     </task>
     <servers />
   </component>

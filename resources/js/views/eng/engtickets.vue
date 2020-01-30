@@ -25,7 +25,7 @@
                 <td class="border p-4 w-1/4">{{data.category.category}}</td>
                 <td class="border p-4 w-1/4">{{data.created_at}}</td>
                 <td class="border p-4 w-1/4 text-center">
-                    <router-link :to="`/details/` + data.id">
+                    <router-link :to="`/assigned/` + data.id">
                         <span class="mdi mdi-eye mdi-30px text-teal-500 mr-6"></span>
                     </router-link>
                     <!--                    <a class="bg-yellow-700 hover:bg-teal-300 text-white font-bold py-2 px-4 rounded-full"-->
