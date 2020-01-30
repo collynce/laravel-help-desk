@@ -2974,6 +2974,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "engtickets",
@@ -2989,7 +3023,8 @@ __webpack_require__.r(__webpack_exports__);
     getEngTickets: function getEngTickets() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/engineers').then(function (r) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/engineers/all').then(function (r) {
+        console.log(r);
         _this.tickets = r.data;
       });
     }
@@ -40887,9 +40922,106 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    " + _vm._s(_vm.tickets) + "\n")])
+  return _c("div", { staticClass: "container py-10 mx-auto" }, [
+    _c("table", { staticClass: "text-left w-full" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm.tickets.length === 0
+        ? _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between w-full"
+            },
+            [_c("tr", [_vm._v("\n            No Data Available\n        ")])]
+          )
+        : _c(
+            "tbody",
+            {
+              staticClass:
+                "bg-gray-400 flex flex-col text-center items-center justify-between overflow-y-scroll w-full",
+              staticStyle: { height: "50vh" }
+            },
+            _vm._l(_vm.tickets, function(data) {
+              return _c("tr", { staticClass: "flex w-full" }, [
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.id))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.subject))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.status))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.category.category))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "border p-4 w-1/4" }, [
+                  _vm._v(_vm._s(data.created_at))
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "border p-4 w-1/4 text-center" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: "/details/" + data.id } },
+                      [
+                        _c("span", {
+                          staticClass: "mdi mdi-eye mdi-30px text-teal-500 mr-6"
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("span", {
+                      staticClass: "mdi mdi-delete mdi-30px text-red-500 mr-6",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteTicket(data.id)
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            }),
+            0
+          )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "thead",
+      { staticClass: "bg-black flex text-white w-full text-center" },
+      [
+        _c("tr", { staticClass: "flex w-full" }, [
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("#")]),
+          _vm._v(" "),
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("Subject")]),
+          _vm._v(" "),
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("Status")]),
+          _vm._v(" "),
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("Category")]),
+          _vm._v(" "),
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("Created On")]),
+          _vm._v(" "),
+          _c("th", { staticClass: " p-4 w-1/4" }, [_vm._v("Actions")])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 

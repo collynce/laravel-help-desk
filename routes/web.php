@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/autoselect', 'TicketsController@assignTicket');
     Route::resource('category', 'TicketsCategory');
     Route::resource('alltickets', 'RoutesController');
+    Route::get('/engineer/get', 'RoutesController@create');
     Route::get('ticket/closed', 'TicketsController@closedTickets');
     Route::resource('engineers', 'EngineersController');
     Route::resource('roles', 'RolesController');
@@ -60,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/tickets/delete/{id}', 'TicketsController@destroy');
         Route::post('/tickets/comment', 'CommentsController@store');
         Route::post('/comments/users/{id}', 'CommentsController@users');
-        Route::get('/engineers', 'EngineersController@index');
+        Route::get('/engineers/all', 'EngineersController@index');
         Route::get('/engineers/details', 'EngineersController@getEngineers');
         Route::post('/tickets/close/{id}', 'TicketsController@closeTicket');
         Route::post('/tickets/open/{id}', 'TicketsController@reopenTicket');

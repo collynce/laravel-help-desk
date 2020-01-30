@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Engineers;
 use App\Http\Resources\TicketsResource;
 use App\Roles;
+use App\Tickets;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,15 +26,16 @@ class EngineersController extends Controller
     public function index()
     {
         $user = Auth::user()->id;
-        $tickets = Engineers::where('users_id', '=', $user)->get();
+       $eng = Engineers::where('users_id', $user)->pluck('id');
+        $tickets = Tickets::with(['user', 'category'])->where('engineers_id', $eng)->get();
         TicketsResource::withoutWrapping();
         return TicketsResource::collection($tickets);
     }
 
     public function getAllEngineers()
     {
-        $users = Roles::all()->where('roles', '=', 'staff');
         $engineers = Engineers::all();
+        $users = Roles::all()->where('roles', '=', 'staff');
         return view('admin.engineer.all')->with('engineers', $engineers)->with('users', $users);
     }
     public function getEngineers()

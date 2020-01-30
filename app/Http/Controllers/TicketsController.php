@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Notifications\TicketCreation;
-use App\Engineers;
+
 use App\Http\Resources\TicketsResource;
 use App\Interfaces\TicketsInterface;
+use App\Notifications\TicketCreation;
 use App\Tickets;
 use App\User;
 use Carbon\Carbon;
@@ -73,7 +73,6 @@ class TicketsController extends Controller
     }
 
 
-
     public function store(Request $request)
     {
         $this->ticket->store($request);
@@ -114,19 +113,43 @@ class TicketsController extends Controller
     public function closeTicket($id)
     {
         $date = Carbon::now();
-        Tickets::where('id', $id)->update(['closed_at' => $date, 'reopened_at' => null]);
+        $ticket = Tickets::where('id', $id)->pluck('id');
+        $eng = Tickets::where('id', $id)->pluck('engineers_id');
+        $owner = Tickets::where('id', $id)->pluck('users_id');
+        $users = User::find([$owner, $eng]);
+        $details = [
+            'greeting' => "Hi",
+            'body' => "Ticket number $ticket has been closed",
+            'thanks' => 'Thank you...',
+        ];
+        foreach ($users as $user) {
+            $user->notify(new TicketCreation($details));
+        }
+        Tickets::where('id', $id)->update(['closed_at' => $date, 'reopened_at' => null, 'status' => 'closed']);
 
     }
 
     public function reopenTicket($id)
     {
         $date = Carbon::now();
-        Tickets::where('id', $id)->update(['closed_at' => null, 'reopened_at' => $date]);
+        $ticket = Tickets::where('id', $id)->pluck('id');
+        $eng = Tickets::where('id', $id)->pluck('engineers_id');
+        $owner = Tickets::where('id', $id)->pluck('users_id');
+        $users = User::find([$owner, $eng]);
+        $details = [
+            'greeting' => "Hi",
+            'body' => "Ticket number $ticket has been reopened`" ,
+            'thanks' => 'Thank you...',
+        ];
+        foreach ($users as $user) {
+            $user->notify(new TicketCreation($details));
+        }
+        Tickets::where('id', $id)->update(['closed_at' => null, 'reopened_at' => $date, 'status' => 'pending']);
     }
 
 
     public function destroy($id)
     {
-       $this->ticket->destroy($id);
+        $this->ticket->destroy($id);
     }
 }

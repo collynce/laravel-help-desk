@@ -83,6 +83,12 @@
                                        href="{{route('alltickets.index')}}">Tickets</a>
                                 </li>
                             @endif
+                            @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('staff'))
+                            <li>
+                                <a class="block p-4 text-gray-400   border-purple hover:bg-grey-lighter "
+                                   href="{{url('/engineer/get')}}">Assigned Tickets</a>
+                            </li>
+                            @endif
                             <li>
                                 <a class="block p-4 text-gray-400  border-purple hover:bg-grey-lighter"
                                    href="{{route('tickets.create')}}">Create Ticket</a>
